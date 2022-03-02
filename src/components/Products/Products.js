@@ -2,7 +2,7 @@ const Products = (props) => {
   return (
     <div>
       <div>name :{props.name}</div>
-      <div>name :{props.family}</div>
+      <div>price:{props.price}</div>
       {props.children}
     </div>
   );
