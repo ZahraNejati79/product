@@ -3,7 +3,7 @@ import Count from "./components/Counter/Counter";
 import Products from "./components/Products/Products";
 import UpdateObject from "./components/HookObject";
 import HookObject from "./components/HookObject";
-
+import HookArray from "./components/HookArray";
 const App = () => {
   const [products, setProducts] = useState([
     { name: "reactjs", price: "100$" },
@@ -17,7 +17,7 @@ const App = () => {
         return <Products name={product.name} price={product.price} />;
       })}
       <Count /> */}
-      <HookObject />
+      <HookArray />
     </div>
   );
 };
