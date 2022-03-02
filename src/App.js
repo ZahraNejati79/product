@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Count from "./components/Counter/Counter";
 import Products from "./components/Products/Products";
+import UpdateObject from "./components/HookObject";
+import HookObject from "./components/HookObject";
+
 const App = () => {
   const [products, setProducts] = useState([
     { name: "reactjs", price: "100$" },
@@ -10,10 +13,11 @@ const App = () => {
   return (
     <div>
       <div>this is shopping</div>
-      {products.map((product) => {
+      {/* {products.map((product) => {
         return <Products name={product.name} price={product.price} />;
       })}
-      <Count />
+      <Count /> */}
+      <HookObject />
     </div>
   );
 };
