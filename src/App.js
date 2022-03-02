@@ -6,18 +6,23 @@ import HookObject from "./components/HookObject";
 import HookArray from "./components/HookArray";
 const App = () => {
   const [products, setProducts] = useState([
-    { name: "reactjs", price: "100$" },
-    { name: "C++", price: "10$" },
-    { name: "javaScript", price: "90$" },
+    { name: "reactjs", price: "100$", id: 1 },
+    { name: "C++", price: "10$", id: 2 },
+    { name: "javaScript", price: "90$", id: 3 },
   ]);
   return (
     <div>
       <div>this is shopping</div>
-      {/* {products.map((product) => {
-        return <Products name={product.name} price={product.price} />;
+      {products.map((product) => {
+        return (
+          <Products
+            name={product.name}
+            key={product.id}
+            price={product.price}
+          />
+        );
       })}
-      <Count /> */}
-      <HookArray />
+      <Count />
     </div>
   );
 };
