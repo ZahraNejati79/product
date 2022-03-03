@@ -1,6 +1,6 @@
 const Products = (props) => {
   return (
-    <div>
+    <div className="product">
       <div>name :{props.name}</div>
       <div>price:{props.price}</div>
       {props.children}
