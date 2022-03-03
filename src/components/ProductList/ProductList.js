@@ -1,9 +1,16 @@
 import Products from "../Products/Products";
-const ProductList = ({ products, removeHandler }) => {
+const ProductList = ({ products, removeHandler, incrementHandler }) => {
   return (
     <div className="productList">
       {products.map((product) => {
-        return <Products product={product} removeHandler={removeHandler} />;
+        return (
+          <Products
+            key={product.id}
+            product={product}
+            removeHandler={removeHandler}
+            incrementHandler={incrementHandler}
+          />
+        );
       })}
     </div>
   );

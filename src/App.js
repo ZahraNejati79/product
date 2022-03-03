@@ -12,11 +12,21 @@ const App = () => {
     const filterProduct = products.filter((product) => product.id !== id);
     setProducts(filterProduct);
   };
+  const incrementHandler = (id) => {
+    const productCopy = [...products];
+    const selectedItem = productCopy.find((product) => product.id === id);
+    selectedItem.quantity++;
+    setProducts(productCopy);
+  };
 
   return (
     <div className="App">
       <div>this is shopping</div>
-      <ProductList products={products} removeHandler={removeHandler} />
+      <ProductList
+        products={products}
+        removeHandler={removeHandler}
+        incrementHandler={incrementHandler}
+      />
       <Count />
     </div>
   );
