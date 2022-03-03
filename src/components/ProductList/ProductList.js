@@ -1,15 +1,9 @@
 import Products from "../Products/Products";
-const ProductList = ({ products }) => {
+const ProductList = ({ products, removeHandler }) => {
   return (
     <div className="productList">
       {products.map((product) => {
-        return (
-          <Products
-            name={product.name}
-            key={product.id}
-            price={product.price}
-          />
-        );
+        return <Products product={product} removeHandler={removeHandler} />;
       })}
     </div>
   );
