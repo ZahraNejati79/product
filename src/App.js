@@ -8,6 +8,7 @@ const App = () => {
     { name: "C++", price: "10$", id: 2, quantity: 1 },
     { name: "javaScript", price: "90$", id: 3, quantity: 0 },
   ]);
+
   const removeHandler = (id) => {
     const filterProduct = products.filter((product) => product.id !== id);
     setProducts(filterProduct);
@@ -18,7 +19,12 @@ const App = () => {
     selectedItem.quantity++;
     setProducts(productCopy);
   };
-
+  const changeHandler = (e, id) => {
+    const copyproduct = [...products];
+    const selectedProduct = copyproduct.find((pro) => pro.id === id);
+    selectedProduct.name = e.target.value;
+    setProducts(copyproduct);
+  };
   return (
     <div className="App">
       <div>this is shopping</div>
@@ -26,6 +32,7 @@ const App = () => {
         products={products}
         removeHandler={removeHandler}
         incrementHandler={incrementHandler}
+        changeHandler={changeHandler}
       />
       <Count />
     </div>
