@@ -4,9 +4,9 @@ import "./App.css";
 import ProductList from "./components/ProductList/ProductList";
 const App = () => {
   const [products, setProducts] = useState([
-    { name: "reactjs", price: "100$", id: 1, quantity: 0 },
+    { name: "reactjs", price: "100$", id: 1, quantity: 1 },
     { name: "C++", price: "10$", id: 2, quantity: 1 },
-    { name: "javaScript", price: "90$", id: 3, quantity: 0 },
+    { name: "javaScript", price: "90$", id: 3, quantity: 1 },
   ]);
 
   const removeHandler = (id) => {
@@ -25,6 +25,12 @@ const App = () => {
     selectedProduct.name = e.target.value;
     setProducts(copyproduct);
   };
+  const decrementHandler = (id) => {
+    const copyProducts = [...products];
+    const selectedItem = copyProducts.find((product) => product.id === id);
+    selectedItem.quantity--;
+    setProducts(copyProducts);
+  };
   return (
     <div className="App">
       <div>this is shopping</div>
@@ -33,6 +39,7 @@ const App = () => {
         removeHandler={removeHandler}
         incrementHandler={incrementHandler}
         changeHandler={changeHandler}
+        decrementHandler={decrementHandler}
       />
       <Count />
     </div>

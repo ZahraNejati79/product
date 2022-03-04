@@ -4,6 +4,7 @@ const ProductList = ({
   removeHandler,
   incrementHandler,
   changeHandler,
+  decrementHandler,
 }) => {
   return (
     <div className="productList">
@@ -15,6 +16,7 @@ const ProductList = ({
             removeHandler={removeHandler}
             incrementHandler={incrementHandler}
             changeHandler={changeHandler}
+            decrementHandler={decrementHandler}
           />
         );
       })}

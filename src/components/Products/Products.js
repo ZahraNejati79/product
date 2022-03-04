@@ -1,10 +1,9 @@
-import { useState } from "react";
-
 const Products = ({
   product,
   removeHandler,
   incrementHandler,
   changeHandler,
+  decrementHandler,
 }) => {
   return (
     <div className="product">
@@ -21,7 +20,16 @@ const Products = ({
       <button className="btn" onClick={() => removeHandler(product.id)}>
         delete
       </button>
-      <button className="btn">-</button>
+      <button
+        className="btn"
+        onClick={
+          product.quantity >= 2
+            ? () => decrementHandler(product.id)
+            : () => removeHandler(product.id)
+        }
+      >
+        -
+      </button>
     </div>
   );
 };
