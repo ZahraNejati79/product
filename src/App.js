@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Count from "./components/Counter/Counter";
 import "./App.css";
 import ProductList from "./components/ProductList/ProductList";
+import NavBar from "./components/NavBar/NavBar";
 const App = () => {
   const [products, setProducts] = useState([
     { name: "reactjs", price: "100$", id: 1, quantity: 1 },
     { name: "C++", price: "10$", id: 2, quantity: 1 },
     { name: "javaScript", price: "90$", id: 3, quantity: 1 },
   ]);
+  const [count, setCount] = useState(0);
 
+  // useEffect(() => {
+  //   setCount(products.length);
+  //   console.log("product.length", count);
+  // }, [products]);
   const removeHandler = (id) => {
     const filterProduct = products.filter((product) => product.id !== id);
     setProducts(filterProduct);
@@ -34,6 +40,7 @@ const App = () => {
   return (
     <div className="App">
       <div>this is shopping</div>
+      <NavBar count={products.filter((p) => p.quantity >= 1).length} />
       <ProductList
         products={products}
         removeHandler={removeHandler}
@@ -41,7 +48,6 @@ const App = () => {
         changeHandler={changeHandler}
         decrementHandler={decrementHandler}
       />
-      <Count />
     </div>
   );
 };
