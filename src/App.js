@@ -3,6 +3,9 @@ import Count from "./components/Counter/Counter";
 import "./App.css";
 import ProductList from "./components/ProductList/ProductList";
 import NavBar from "./components/NavBar/NavBar";
+import ClassCounter from "./components/ClassCounter/ClassCounter";
+import Timer from "./components/FunctionalTimer/FanctionalTimer";
+
 const App = () => {
   const [products, setProducts] = useState([
     { name: "reactjs", price: "100$", id: 1, quantity: 1 },
@@ -10,11 +13,13 @@ const App = () => {
     { name: "javaScript", price: "90$", id: 3, quantity: 1 },
   ]);
   const [count, setCount] = useState(0);
+  const [isShow, setIsShow] = useState(true);
 
   // useEffect(() => {
   //   setCount(products.length);
   //   console.log("product.length", count);
   // }, [products]);
+
   const removeHandler = (id) => {
     const filterProduct = products.filter((product) => product.id !== id);
     setProducts(filterProduct);
@@ -39,7 +44,11 @@ const App = () => {
   };
   return (
     <div className="App">
-      <div>this is shopping</div>
+      <button onClick={() => setIsShow(!isShow)}>
+        {isShow ? "Hide" : "Show"}
+      </button>
+      {isShow && <Timer />}
+      {/* <div>this is shopping</div>
       <NavBar count={products.filter((p) => p.quantity >= 1).length} />
       <ProductList
         products={products}
@@ -47,7 +56,8 @@ const App = () => {
         incrementHandler={incrementHandler}
         changeHandler={changeHandler}
         decrementHandler={decrementHandler}
-      />
+      /> */}
+      {/* <ClassCounter /> */}
     </div>
   );
 };
