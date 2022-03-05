@@ -5,6 +5,7 @@ import ProductList from "./components/ProductList/ProductList";
 import NavBar from "./components/NavBar/NavBar";
 import ClassCounter from "./components/ClassCounter/ClassCounter";
 import Timer from "./components/FunctionalTimer/FanctionalTimer";
+import Wrapper from "./components/wrapper/Wrapper";
 
 const App = () => {
   const [products, setProducts] = useState([
@@ -43,12 +44,12 @@ const App = () => {
     setProducts(copyProducts);
   };
   return (
-    <div className="App">
-      <button onClick={() => setIsShow(!isShow)}>
+    <>
+      {/* <button onClick={() => setIsShow(!isShow)}>
         {isShow ? "Hide" : "Show"}
       </button>
-      {isShow && <Timer />}
-      {/* <div>this is shopping</div>
+      {isShow && <Timer />} */}
+
       <NavBar count={products.filter((p) => p.quantity >= 1).length} />
       <ProductList
         products={products}
@@ -56,10 +57,9 @@ const App = () => {
         incrementHandler={incrementHandler}
         changeHandler={changeHandler}
         decrementHandler={decrementHandler}
-      /> */}
-      {/* <ClassCounter /> */}
-    </div>
+      />
+    </>
   );
 };
 
-export default App;
+export default Wrapper(App, "App");
