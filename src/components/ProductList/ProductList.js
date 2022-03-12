@@ -1,12 +1,17 @@
 import Products from "../Products/Products";
-import { useProducts } from "../providerProducts/ProductsProvider";
-const ProductList = ({
-  removeHandler,
-  incrementHandler,
-  changeHandler,
-  decrementHandler,
-}) => {
+import {
+  useProducts,
+  useSetProducts,
+} from "../providerProducts/ProductsProvider";
+const ProductList = () => {
   const products = useProducts();
+  const {
+    setProducts,
+    removeHandler,
+    incrementHandler,
+    changeHandler,
+    decrementHandler,
+  } = useSetProducts();
   return (
     <div className="productList">
       {products.map((product) => {
