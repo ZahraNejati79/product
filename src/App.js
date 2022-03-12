@@ -8,6 +8,10 @@ import Timer from "./components/FunctionalTimer/FanctionalTimer";
 import Wrapper from "./components/hoc/Wrapper";
 import HoverCounter from "./components/Count/HoverCounter";
 import ClickCounter from "./components/Count/ClickCounter";
+import Reset from "./components/Ref/Reset";
+import CounterProvider from "./components/ContextCounter/ContextProvider";
+
+export const WebContext = React.createContext();
 
 const App = () => {
   const [products, setProducts] = useState([
@@ -47,22 +51,17 @@ const App = () => {
   };
   return (
     <>
-      <ClickCounter />
-      <HoverCounter />
-
-      {/* <button onClick={() => setIsShow(!isShow)}>
-        {isShow ? "Hide" : "Show"}
-      </button>
-      {isShow && <Timer />} */}
-      {/* 
-      <NavBar count={products.filter((p) => p.quantity >= 1).length} />
-      <ProductList
-        products={products}
-        removeHandler={removeHandler}
-        incrementHandler={incrementHandler}
-        changeHandler={changeHandler}
-        decrementHandler={decrementHandler}
-      /> */}
+      <CounterProvider />
+      {/* <WebContext.Provider value="Zahra">
+        <NavBar count={products.filter((p) => p.quantity >= 1).length} />
+        <ProductList
+          products={products}
+          removeHandler={removeHandler}
+          incrementHandler={incrementHandler}
+          changeHandler={changeHandler}
+          decrementHandler={decrementHandler}
+        />
+      </WebContext.Provider> */}
     </>
   );
 };
