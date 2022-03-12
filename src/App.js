@@ -5,7 +5,9 @@ import ProductList from "./components/ProductList/ProductList";
 import NavBar from "./components/NavBar/NavBar";
 import ClassCounter from "./components/ClassCounter/ClassCounter";
 import Timer from "./components/FunctionalTimer/FanctionalTimer";
-import Wrapper from "./components/wrapper/Wrapper";
+import Wrapper from "./components/hoc/Wrapper";
+import HoverCounter from "./components/Count/HoverCounter";
+import ClickCounter from "./components/Count/ClickCounter";
 
 const App = () => {
   const [products, setProducts] = useState([
@@ -13,7 +15,7 @@ const App = () => {
     { name: "C++", price: "10$", id: 2, quantity: 1 },
     { name: "javaScript", price: "90$", id: 3, quantity: 1 },
   ]);
-  const [count, setCount] = useState(0);
+
   const [isShow, setIsShow] = useState(true);
 
   // useEffect(() => {
@@ -45,11 +47,14 @@ const App = () => {
   };
   return (
     <>
+      <ClickCounter />
+      <HoverCounter />
+
       {/* <button onClick={() => setIsShow(!isShow)}>
         {isShow ? "Hide" : "Show"}
       </button>
       {isShow && <Timer />} */}
-
+      {/* 
       <NavBar count={products.filter((p) => p.quantity >= 1).length} />
       <ProductList
         products={products}
@@ -57,7 +62,7 @@ const App = () => {
         incrementHandler={incrementHandler}
         changeHandler={changeHandler}
         decrementHandler={decrementHandler}
-      />
+      /> */}
     </>
   );
 };
