@@ -10,6 +10,7 @@ import HoverCounter from "./components/Count/HoverCounter";
 import ClickCounter from "./components/Count/ClickCounter";
 import Reset from "./components/Ref/Reset";
 import CounterProvider from "./components/ContextCounter/ContextProvider";
+import CounterReduce from "./components/Reduce/ReducerCountState";
 
 export const WebContext = React.createContext();
 
@@ -51,7 +52,7 @@ const App = () => {
   };
   return (
     <>
-      <CounterProvider />
+      <CounterReduce />
       {/* <WebContext.Provider value="Zahra">
         <NavBar count={products.filter((p) => p.quantity >= 1).length} />
         <ProductList
