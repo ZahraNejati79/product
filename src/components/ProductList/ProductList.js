@@ -1,11 +1,12 @@
 import Products from "../Products/Products";
+import { useProducts } from "../providerProducts/ProductsProvider";
 const ProductList = ({
-  products,
   removeHandler,
   incrementHandler,
   changeHandler,
   decrementHandler,
 }) => {
+  const products = useProducts();
   return (
     <div className="productList">
       {products.map((product) => {

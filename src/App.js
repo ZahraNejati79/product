@@ -11,18 +11,20 @@ import ClickCounter from "./components/Count/ClickCounter";
 import Reset from "./components/Ref/Reset";
 import CounterProvider from "./components/ContextCounter/ContextProvider";
 import CounterReduce from "./components/Reduce/ReducerCountState";
+import ProductsProvider, {
+  useSetProducts,
+} from "./components/providerProducts/ProductsProvider";
+import {
+  useProducts,
+  useStateProducts,
+} from "./components/providerProducts/ProductsProvider";
 
 export const WebContext = React.createContext();
 
 const App = () => {
-  const [products, setProducts] = useState([
-    { name: "reactjs", price: "100$", id: 1, quantity: 1 },
-    { name: "C++", price: "10$", id: 2, quantity: 1 },
-    { name: "javaScript", price: "90$", id: 3, quantity: 1 },
-  ]);
-
   const [isShow, setIsShow] = useState(true);
-
+  const products = useProducts();
+  const setProducts = useSetProducts();
   // useEffect(() => {
   //   setCount(products.length);
   //   console.log("product.length", count);
@@ -52,17 +54,15 @@ const App = () => {
   };
   return (
     <>
-      <CounterReduce />
-      {/* <WebContext.Provider value="Zahra">
-        <NavBar count={products.filter((p) => p.quantity >= 1).length} />
+      <ProductsProvider>
+        <NavBar />
         <ProductList
-          products={products}
           removeHandler={removeHandler}
           incrementHandler={incrementHandler}
           changeHandler={changeHandler}
           decrementHandler={decrementHandler}
         />
-      </WebContext.Provider> */}
+      </ProductsProvider>
     </>
   );
 };

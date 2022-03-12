@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { WebContext } from "../../App";
-const NavBar = ({ count }) => {
-  const name = useContext(WebContext);
+import { useProducts } from "../providerProducts/ProductsProvider";
+const NavBar = () => {
+  const products = useProducts();
+
   return (
     <>
-      {name}
-      <header>Count :{count}</header>
+      <header>Count :{products.filter((p) => p.quantity >= 1).length}</header>
     </>
   );
 };
