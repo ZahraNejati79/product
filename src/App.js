@@ -14,23 +14,13 @@ import CounterReduce from "./components/Reduce/ReducerCountState";
 import ProductsProvider, {
   useSetProducts,
 } from "./components/providerProducts/ProductsProvider";
-import {
-  useProducts,
-  useStateProducts,
-} from "./components/providerProducts/ProductsProvider";
+import { useProducts } from "./components/providerProducts/ProductsProvider";
 
 export const WebContext = React.createContext();
 
 const App = () => {
   const [isShow, setIsShow] = useState(true);
   const products = useProducts();
-  const {
-    setProducts,
-    removeHandler,
-    incrementHandler,
-    changeHandler,
-    decrementHandler,
-  } = useSetProducts();
 
   // useEffect(() => {
   //   setCount(products.length);
