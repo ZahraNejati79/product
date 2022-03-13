@@ -1,14 +1,9 @@
 import React, { useContext, useReducer, useState } from "react";
 import Products from "../Products/Products";
+import { productsData } from "../db/products";
 
 const productContext = React.createContext();
 const setProductsContext = React.createContext();
-
-const initialState = [
-  { name: "reactjs", price: "100$", id: 1, quantity: 1 },
-  { name: "C++", price: "10$", id: 2, quantity: 1 },
-  { name: "javaScript", price: "90$", id: 3, quantity: 1 },
-];
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -43,7 +38,7 @@ const reducer = (state, action) => {
   }
 };
 const ProductsProvider = ({ children }) => {
-  const [products, dispatch] = useReducer(reducer, initialState);
+  const [products, dispatch] = useReducer(reducer, productsData);
   return (
     <productContext.Provider value={products}>
       <setProductsContext.Provider value={dispatch}>
