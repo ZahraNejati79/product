@@ -33,6 +33,16 @@ const reducer = (state, action) => {
       selectedItem.quantity--;
       return copyProducts;
     }
+    case "filter": {
+      if (action.event.value === "all") {
+        return productsData;
+      } else {
+        const updatedProducts = productsData.filter(
+          (P) => P.size.indexOf(action.event.target.value) >= 0
+        );
+        return updatedProducts;
+      }
+    }
     default:
       return state;
   }
