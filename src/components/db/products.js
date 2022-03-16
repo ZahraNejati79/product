@@ -3,7 +3,7 @@ export const productsData = [
     id: 1,
     title: "volutpat",
     price: "$66.58",
-    size: ["x", "xl"],
+    size: ["x", "xl", "xxl"],
     quantity: 1,
   },
   { id: 2, title: "sit", price: "$57.29", size: ["xl", "l"], quantity: 1 },
@@ -18,7 +18,7 @@ export const productsData = [
     id: 4,
     title: "eget",
     price: "$19.36",
-    size: ["x", "xl"],
+    size: ["x", "xl", "xxl"],
     quantity: 1,
   },
   {

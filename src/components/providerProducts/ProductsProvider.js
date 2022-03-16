@@ -34,7 +34,7 @@ const reducer = (state, action) => {
       return copyProducts;
     }
     case "filter": {
-      if (action.event.value === "all") {
+      if (action.event.target.value == "all") {
         return productsData;
       } else {
         const updatedProducts = productsData.filter(
