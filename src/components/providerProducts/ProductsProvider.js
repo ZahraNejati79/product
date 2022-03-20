@@ -19,12 +19,12 @@ const reducer = (state, action) => {
       selectedItem.quantity++;
       return productCopy;
     }
-    case "changeHandler": {
-      const copyproduct = [...state];
-      const selectedProduct = copyproduct.find((pro) => pro.id === action.id);
-      selectedProduct.name = action.event.target.value;
-      return copyproduct;
-    }
+    // case "changeHandler": {
+    //   const copyproduct = [...state];
+    //   const selectedProduct = copyproduct.find((pro) => pro.id === action.id);
+    //   selectedProduct.name = action.event.target.value;
+    //   return copyproduct;
+    // }
     case "decrementHandler": {
       const copyProducts = [...state];
       const selectedItem = copyProducts.find(
@@ -34,13 +34,31 @@ const reducer = (state, action) => {
       return copyProducts;
     }
     case "filter": {
-      if (action.event.target.value == "") {
+      if (action.event.value == "") {
         return productsData;
       } else {
         const updatedProducts = productsData.filter(
-          (P) => P.size.indexOf(action.event.target.value) >= 0
+          (P) => P.size.indexOf(action.event.value) >= 0
         );
         return updatedProducts;
+      }
+    }
+    case "sort": {
+      const products = [...state];
+      if (action.event.value === "up") {
+        const sorttedProducts = products.sort((a, b) => {
+          if (a.price < b.price) return 1;
+          if (a.price > b.price) return -1;
+          return 0;
+        });
+        return sorttedProducts;
+      } else {
+        const sorttedProducts = state.sort((a, b) => {
+          if (a.price > b.price) return 1;
+          if (a.price < b.price) return -1;
+          return 0;
+        });
+        return sorttedProducts;
       }
     }
     default:

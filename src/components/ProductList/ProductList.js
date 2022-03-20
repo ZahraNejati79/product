@@ -19,9 +19,9 @@ const ProductList = () => {
             incrementHandler={() =>
               dispatch({ type: "incrementHandler", id: product.id })
             }
-            changeHandler={(e) =>
-              dispatch({ type: "changeHandler", id: product.id, event: e })
-            }
+            // changeHandler={(e) =>
+            //   dispatch({ type: "changeHandler", id: product.id, event: e })
+            // }
             decrementHandler={() =>
               dispatch({ type: "decrementHandler", id: product.id })
             }
