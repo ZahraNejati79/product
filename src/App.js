@@ -16,6 +16,7 @@ import ProductsProvider, {
 } from "./components/providerProducts/ProductsProvider";
 import { useProducts } from "./components/providerProducts/ProductsProvider";
 import FilterSize from "./components/Filter/Filter";
+import SearchTilte from "./components/Search/Search";
 
 export const WebContext = React.createContext();
 
@@ -32,6 +33,7 @@ const App = () => {
     <>
       <ProductsProvider>
         <NavBar />
+
         <FilterSize />
         <ProductList />
       </ProductsProvider>

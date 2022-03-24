@@ -53,13 +53,22 @@ const reducer = (state, action) => {
         });
         return sorttedProducts;
       } else {
-        const sorttedProducts = state.sort((a, b) => {
+        const sorttedProducts = products.sort((a, b) => {
           if (a.price > b.price) return 1;
           if (a.price < b.price) return -1;
           return 0;
         });
         return sorttedProducts;
       }
+    }
+    case "search": {
+      const searchValue = action.event.target.value;
+      console.log(searchValue);
+      const products = [...state];
+      const searchProducts = products.filter((p) =>
+        p.title.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      return searchProducts;
     }
     default:
       return state;

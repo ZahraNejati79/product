@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
 import { useProductAction } from "../providerProducts/ProductsProvider";
+import SearchTilte from "../Search/Search";
 const FilterSize = () => {
   const [filterValue, setFilterVlaue] = useState("");
   const [sort, setSort] = useState("");
@@ -19,13 +20,16 @@ const FilterSize = () => {
   const filterHandler = (selectedFilter) => {
     setFilterVlaue(selectedFilter);
     dispatch({ type: "filter", event: selectedFilter });
+    dispatch({ type: "sort", event: sort });
   };
   const sortHandler = (selectedSort) => {
+    console.log(selectedSort);
     setSort(selectedSort);
     dispatch({ type: "sort", event: selectedSort });
   };
   return (
     <div className="Filter">
+      <SearchTilte filter={filterValue} />
       <div> filter based on :</div>
       <Select
         options={filterOptions}
