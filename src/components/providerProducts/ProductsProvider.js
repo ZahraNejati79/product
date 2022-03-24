@@ -45,7 +45,7 @@ const reducer = (state, action) => {
     }
     case "sort": {
       const products = [...state];
-      if (action.event.value === "up") {
+      if (action.event.value === "highest") {
         const sorttedProducts = products.sort((a, b) => {
           if (a.price < b.price) return 1;
           if (a.price > b.price) return -1;

@@ -12,8 +12,8 @@ const FilterSize = () => {
     { value: "xxl", label: "XXL" },
   ];
   const sortOptions = [
-    { value: "up", label: "UptoDown" },
-    { value: "down", label: "DowntoUp" },
+    { value: "highest", label: "Highest" },
+    { value: "lowest", label: "Lowest" },
   ];
   const dispatch = useProductAction();
   const filterHandler = (selectedFilter) => {
@@ -25,7 +25,7 @@ const FilterSize = () => {
     dispatch({ type: "sort", event: selectedSort });
   };
   return (
-    <div>
+    <div className="Filter">
       <div> filter based on :</div>
       <Select
         options={filterOptions}
