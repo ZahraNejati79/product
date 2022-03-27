@@ -1,6 +1,7 @@
-import React, { useContext, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import Products from "../Products/Products";
-import { productsData } from "../db/products";
+
+import axios from "axios";
 
 const productContext = React.createContext();
 const setProductsContext = React.createContext();
@@ -76,6 +77,19 @@ const reducer = (state, action) => {
 };
 const ProductsProvider = ({ children }) => {
   const [products, dispatch] = useReducer(reducer, productsData);
+
+  const [productsData, setProductsData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/productsData")
+      .then((res) => {
+        console.log(res);
+        setProductsContext(res.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <productContext.Provider value={products}>
       <setProductsContext.Provider value={dispatch}>
