@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
-import Products from "../Products/Products";
 
 import axios from "axios";
 
 const productContext = React.createContext();
 const setProductsContext = React.createContext();
 
+const productsData = { data: [] };
 const reducer = (state, action) => {
   switch (action.type) {
     case "removeHandler": {
@@ -71,24 +71,36 @@ const reducer = (state, action) => {
       );
       return searchProducts;
     }
+    case "FetchProject": {
+      const { data } = action.payload;
+      return data;
+    }
     default:
       return state;
   }
 };
 const ProductsProvider = ({ children }) => {
-  const [products, dispatch] = useReducer(reducer, productsData);
-
-  const [productsData, setProductsData] = useState(null);
-
+  const [productsData, setProductsData] = useState([]);
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/productsData")
-      .then((res) => {
-        console.log(res);
-        setProductsContext(res.data);
-      })
-      .catch((error) => console.log(error));
+    const getProducts = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:3001/productsData");
+        console.log(data);
+        dispatch({ type: "FetchProject", payload: { data } });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProducts();
+    // axios
+    //   .get("http://localhost:3001/productsData")
+    //   .then((res) => {
+    //     console.log(res);
+    //     setProductsData(res.data);
+    //   })
+    //   .catch((error) => console.log(error));
   }, []);
+  const [products, dispatch] = useReducer(reducer, productsData);
 
   return (
     <productContext.Provider value={products}>
